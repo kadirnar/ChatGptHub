@@ -8,4 +8,3 @@ def load_promptlayer_key(promptlayer_key):
     import os
 
     os.environ["PROMPTLAYER_API_KEY"] = promptlayer_key
-    
