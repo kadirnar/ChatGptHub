@@ -1,4 +1,8 @@
-def prompt_template(template, input_variables, text):
+def prompt_template(
+    template: str = "You are a helpful assistant that English to Turkish and you are asked to translate the following text: {text}",
+    input_variables: str = "text",
+    text: str = "Hello, how are you?",
+):
     from langchain.chains import LLMChain
     from langchain.chat_models import ChatOpenAI
     from langchain.prompts import PromptTemplate
