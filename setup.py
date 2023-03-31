@@ -18,7 +18,7 @@ def get_requirements():
 
 def get_version():
     current_dir = os.path.abspath(os.path.dirname(__file__))
-    version_file = os.path.join(current_dir, "chatgpt_webui", "__init__.py")
+    version_file = os.path.join(current_dir, "chatgpthub", "__init__.py")
     with io.open(version_file, encoding="utf-8") as f:
         return re.search(
             r'^__version__ = [\'"]([^\'"]*)[\'"]', f.read(), re.M
@@ -26,14 +26,14 @@ def get_version():
 
 
 setuptools.setup(
-    name="chatgpt-webui",
+    name="chatgpthub",
     version=get_version(),
     author="kadirnar",
     license="Apache License 2.0",
-    description="PyTorch implementation of (GPT-3.5-Turbo) with WebUI",
+    description="ChatGptHub: Gpt Chatbot Library with LangChain Support",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
-    url="https://github.com/kadirnar/chatgpt-webui",
+    url="https://github.com/kadirnar/chatgpthub",
     python_requires=">=3.6",
     install_requires=get_requirements(),
     classifiers=[
