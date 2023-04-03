@@ -16,16 +16,9 @@ pip install chatgpthub
 
 ### Usage
 ```python
-from chatgpthub import (
-    load_openai_key,
-    load_promptlayer_key,
-    prompt_template,
-    translate_chatgpt,
-    promptlayer_chatgpt,
-)
+from chatgpthub.demo import ChatGptHubDemo
 
 # translate chatgpt model
-from chatgpthub.demo import ChatGptHubDemo
 
 demo = ChatGptHubDemo(
     openai_key="openai_key",
@@ -33,6 +26,7 @@ demo = ChatGptHubDemo(
 )
 
 # translate chatgpt model
+
 demo.translate(
     model_name: str = "gpt-3.5-turbo",
     input_language: str = "English",
@@ -42,6 +36,7 @@ demo.translate(
 )
 
 # promptlayer chatgpt model
+
 demo.promptlayer(
     model_name: str = "gpt-3.5-turbo",
     text: str = "Hello, how are you?",
@@ -49,12 +44,6 @@ demo.promptlayer(
 )
 
 # custom template chatgpt model
-template = """
-Englist words explanation:
-    - {text}
-Turkish words explanation:
-    - {translation}
-"""
 
 template = "You are a helpful assistant that python to c++ and you are asked to translate the following text: {text}"
 text = "print('Hello, world!')"
@@ -65,5 +54,4 @@ output = demo.custom_template(
     text=text,
     temperature=0.0,
 )
-
 ```
