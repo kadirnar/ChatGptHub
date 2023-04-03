@@ -1,4 +1,12 @@
-from chatgpthub import load_openai_key, load_promptlayer_key, translate_chatgpt
+from typing import Optional
+
+from chatgpthub import (
+    load_openai_key,
+    load_promptlayer_key,
+    prompt_template,
+    promptlayer_chatgpt,
+    translate_chatgpt,
+)
 
 
 def load_key(openai_key: str = None, promptlayer_key: str = None):
@@ -15,14 +23,19 @@ def load_key(openai_key: str = None, promptlayer_key: str = None):
 
 
 class ChatGptHubDemo:
-    def __init__(self, openai_key: str = None, promptlayer_key: str = None):
+    def __init__(
+        self, openai_key: str = None, promptlayer_key: Optional[str] = None
+    ):
         """
         This class is a demo for the chatgpthub library.
         Args:
             openai_key: The OpenAI key to use. Defaults to None.
             promptlayer_key: The PromptLayer key to use. Defaults to None.
         """
-        load_key(openai_key, promptlayer_key)
+        load_key(openai_key=openai_key)
+
+        if promptlayer_key is not None:
+            load_promptlayer_key(promptlayer_key)
 
     def translate(
         self,
@@ -53,15 +66,52 @@ class ChatGptHubDemo:
 
         return output
 
+    def custom_template(
+        self,
+        model_name: str = "gpt-3.5-turbo",
+        template: str = "You are a helpful assistant that English to Turkish and you are asked to translate the following text: {text}",
+        input_variables: str = "text",
+        text: str = "Hello, how are you?",
+        temperature: float = 0.0,
+    ):
+        """
+        This function is a demo for the prompt_template function.
+        Args:
+            model_name: The name of the model to use. Defaults to "gpt-3.5-turbo".
+            template: The prompt template to use. Defaults to "You are a helpful assistant that English to Turkish and you are asked to translate the following text: {text}".
+            input_variables: The input variables to use. Defaults to "text".
+            text: The text to translate. Defaults to "Hello, how are you?".
+            temperature: The temperature to use for the model. Defaults to 0.0.
+        Returns:
+            The translated text.
+        """
+        output = prompt_template(
+            model_name=model_name,
+            template=template,
+            input_variables=input_variables,
+            text=text,
+            temperature=temperature,
+        )
 
-if __name__ == "__main__":
-    demo = ChatGptHubDemo()
-    output = demo.translate(
-        model_name="gpt-3.5-turbo",
-        input_language="English",
-        output_language="Turkish",
-        text="Hello, how are you?",
-        temperature=0.0,
-    )
+        return output
 
-    print(output)
+    def promptlayer(
+        self,
+        model_name: str = "gpt-3.5-turbo",
+        text: str = "Hello, I am a chatbot and",
+        temperature: float = 0.0,
+    ):
+        """
+        This function is a demo for the promptlayer_chatgpt function.
+        Args:
+            model_name: The name of the model to use. Defaults to "gpt-3.5-turbo".
+            text: The text to use as the prompt. Defaults to "Hello, I am a chatbot and".
+            temperature: The temperature to use for the model. Defaults to 0.0.
+        Returns:
+            The chatbot's response.
+        """
+        output = promptlayer_chatgpt(
+            model_name=model_name, text=text, temperature=temperature
+        )
+
+        return output

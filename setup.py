@@ -27,13 +27,14 @@ def get_version():
 
 setuptools.setup(
     name="chatgpthub",
-    version="0.0.6",
+    version=get_version(),
     author="kadirnar",
-    license="Apache License 2.0",
+    license="Apache-2.0",
     description="ChatGptHub: Gpt Chatbot Library with LangChain Support",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
     url="https://github.com/kadirnar/chatgpthub",
+    packages=setuptools.find_packages(),
     python_requires=">=3.6",
     install_requires=get_requirements(),
     classifiers=[
