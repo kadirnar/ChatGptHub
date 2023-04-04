@@ -1,1 +1,9 @@
+# prompt library
 langchain==0.0.127
+openai
+
+# code formatting
+black==21.7b0 
+flake8==3.9.2
+isort==5.9.2
+click==8.0.4
