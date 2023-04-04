@@ -1,4 +1,4 @@
-def prompt_template(
+def custom_prompt_template(
     model_name: str = "gpt-3.5-turbo",
     template: str = "You are a helpful assistant that English to Turkish and you are asked to translate the following text: {text}",
     input_variables: str = "text",

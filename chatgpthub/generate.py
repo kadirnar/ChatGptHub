@@ -9,7 +9,9 @@ from chatgpthub import (
 )
 
 
-def load_key(openai_key: str = None, promptlayer_key: str = None):
+def load_key(
+    openai_key: Optional[str] = None, promptlayer_key: Optional[str] = None
+):
     """
     This function loads the OpenAI and PromptLayer keys.
     Args:
@@ -24,7 +26,9 @@ def load_key(openai_key: str = None, promptlayer_key: str = None):
 
 class ChatGptHubDemo:
     def __init__(
-        self, openai_key: str = None, promptlayer_key: Optional[str] = None
+        self,
+        openai_key: Optional[str] = None,
+        promptlayer_key: Optional[str] = None,
     ):
         """
         This class is a demo for the chatgpthub library.
@@ -34,8 +38,7 @@ class ChatGptHubDemo:
         """
         load_key(openai_key=openai_key)
 
-        if promptlayer_key is not None:
-            load_promptlayer_key(promptlayer_key)
+        self.promptlayer_key = promptlayer_key
 
     def translate(
         self,
@@ -110,6 +113,13 @@ class ChatGptHubDemo:
         Returns:
             The chatbot's response.
         """
+        if self.promptlayer_key is not None:
+            load_promptlayer_key(self.promptlayer_key)
+        else:
+            raise Exception(
+                "You need to provide a PromptLayer key to use the promptlayer_chatgpt function."
+            )
+
         output = promptlayer_chatgpt(
             model_name=model_name, text=text, temperature=temperature
         )
