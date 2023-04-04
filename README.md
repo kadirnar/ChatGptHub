@@ -17,7 +17,7 @@ pip install chatgpthub
 
 ### Usage
 ```python
-from chatgpthub.demo import ChatGptHubDemo
+from chatgpthub import ChatGptHubDemo
 
 # translate chatgpt model
 
