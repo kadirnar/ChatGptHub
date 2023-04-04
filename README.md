@@ -29,19 +29,19 @@ demo = ChatGptHubDemo(
 # translate chatgpt model
 
 demo.translate(
-    model_name: str = "gpt-3.5-turbo",
-    input_language: str = "English",
-    output_language: str = "Turkish",
-    text: str = "Hello, how are you?",
-    temperature: float = 0.0,
+    model_name = "gpt-3.5-turbo",
+    input_language = "English",
+    output_language = "Turkish",
+    text = "Hello, how are you?",
+    temperature = 0.0,
 )
 
 # promptlayer chatgpt model
 
 demo.promptlayer(
-    model_name: str = "gpt-3.5-turbo",
-    text: str = "Hello, how are you?",
-    temperature: float = 0.0,
+    model_name = "gpt-3.5-turbo",
+    text = "Hello, how are you?",
+    temperature = 0.0,
 )
 
 # custom template chatgpt model
